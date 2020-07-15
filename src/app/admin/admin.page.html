@@ -1,0 +1,97 @@
+<ion-content>
+  <div class="adminHead">
+    <div><p>admin Name</p></div>
+    <ion-searchbar (input)="searchThis($event)" [(ngModel)]="searchV"></ion-searchbar>
+    <div><p>logout</p></div>
+  </div>
+  <div class="productListCont">
+    <ion-list *ngIf="!searchR">
+      <ion-item  *ngFor="let prod of products" >{{ prod.name }} {{ prod.brand }} <img [src]="prod.pictures[0]" alt=""> </ion-item>
+    </ion-list>
+    <ion-list *ngIf="searchR">
+      <ion-item><b>Search Results</b></ion-item>
+      <ion-item *ngFor="let prod of searchR">{{ prod.name }} {{ prod.brand }} </ion-item>
+      <ion-item *ngIf="products.length !== 0">didn't find the product? add the product below </ion-item>
+      <ion-item *ngIf="products.length === 0">Kindly Check Your Internet Connection</ion-item>
+      
+    </ion-list>
+  </div>
+  <div class="adminBody">
+    <div class="image">
+      <img [src]="imgSrc" class="toshow" alt="">
+      <img src="/assets/dissp.svg" class="backss" alt="">
+      <ion-input type="file" accept="image/*" (change)="showPrev($event)" *ngIf="!isLoading"></ion-input>
+      <ion-progress-bar *ngIf="percentage | async as pct" value="{{ pct / 100 }}"></ion-progress-bar>
+      <p (click)="uploadFile1()" id="coolBtn">Add Photo</p>
+    </div>
+    <div class="imagesDisp">
+      <ion-label><b>Pictures</b><ion-text>*</ion-text></ion-label>
+      <div *ngFor="let pic of pictures">
+        <img [src]="pic" alt="/assets/dissp.svg" class="iOmg">
+        <img src="/assets/icon/closing.svg" alt="" class="oIconic" (click)="deletePhoto(pic)">
+      </div>
+    </div>
+    <div class="longData">
+      <ion-label style="width: 100%; text-align: center;"><b>Product Details</b><ion-text>*</ion-text></ion-label>
+      <ion-list class="bg-transparent">
+        <ion-item color="nene">
+          <ion-label>Category<ion-text>*</ion-text></ion-label>
+          <ion-select okText="Okay" cancelText="Dismiss" [(ngModel)]="category">
+            <ion-select-option *ngFor="let val of categories" (value)="val">{{ val }}</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item color="none">
+          <ion-label position="floating">Name<ion-text>*</ion-text></ion-label>
+          <ion-input type="text" [(ngModel)]="name" ></ion-input>
+        </ion-item>
+        <ion-item color="none">
+          <ion-label position="floating">Brand<ion-text>*</ion-text></ion-label>
+          <ion-input type="text" [(ngModel)]="brand" ></ion-input>
+        </ion-item>
+        <ion-item color="none">
+          <ion-label position="floating">details<ion-text>*</ion-text></ion-label>
+          <ion-textarea auto-grow="true" rows="5" [(ngModel)]="details"></ion-textarea>
+        </ion-item>
+        <ion-item color="none">
+          <div class="toGrid">
+            <ion-label style="width: 100%; text-align: center;"><b>Key Feature</b><ion-text>*</ion-text></ion-label>
+            <div *ngFor="let fit of features" class="iggmgg">{{ fit }} <img src="/assets/icon/sub.svg" (click)="subFeature(fit,1)"></div>
+            <div class="addittt">
+              <p>Add:</p>
+              <ion-input type="text" [(ngModel)]="feature" (focusout)="addFeature(1)" (keyup.enter)="addFeature(1)"></ion-input>
+              <img src="/assets/icon/add.svg" (click)="addFeature(1)">
+            </div>
+          </div>
+        </ion-item>
+        <ion-item color="none">
+          <div class="toGrid">
+            <ion-label style="width: 100%; text-align: center;"><b>In the Package</b><ion-text>*</ion-text></ion-label>
+            <div *ngFor="let fit of inTheBox" class="iggmgg">{{ fit }} <img src="/assets/icon/sub.svg" (click)="subFeature(fit,2)"></div>
+            <div class="addittt">
+              <p>Add:</p>
+              <ion-input type="text" [(ngModel)]="itemBox" (focusout)="addFeature(2)" (keyup.enter)="addFeature(2)"></ion-input>
+              <img src="/assets/icon/add.svg" (click)="addFeature(2)">
+            </div>
+          </div>
+        </ion-item>
+        <ion-item color="none">
+          <div class="toGrid">
+            <ion-label style="width: 100%; text-align: center;"><b>Specification</b><ion-text>*</ion-text></ion-label>
+            <div *ngFor="let fit of specification" class="iggmgg1"><b>{{ fit.speck }}: </b>{{ fit.detailSp }} <img src="/assets/icon/sub.svg" (click)="subFeature(fit,3)"></div>
+            <div class="addittt1">
+              <p>Specks:</p>
+              <ion-input type="text" placeholder="eg. RAM" [(ngModel)]="speck" (focusout)="addFeature(3)" (keyup.enter)="addFeature(3)"></ion-input>
+              <p>Specks Details:</p>
+              <ion-input type="text" placeholder="eg. 3GB" [(ngModel)]="detailSp" (focusout)="addFeature(3)" (keyup.enter)="addFeature(3)"></ion-input>
+              <img src="/assets/icon/add.svg" (click)="addFeature(3)">
+            </div>
+          </div>
+        </ion-item>
+        <ion-item>
+          <div class="subbmitMe" (click)="submitMEE()">Submit</div>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</ion-content>

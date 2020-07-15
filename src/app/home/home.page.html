@@ -1,20 +1,76 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+<ion-content>
+    <div id="topMenu">
+        <div class="backedd"></div>
+        <div class="logoss">
+          <img src="/assets/icon/logo.svg" alt="">
+        </div>
+        <div class="backedd longedd">
+          <ion-searchbar></ion-searchbar>
+          <p>Login</p>
+          <div class="cartCont">
+            <img src="/assets/icon/cart.svg" alt="">
+          </div>
+        </div>
+    </div>
+    <div class="mainBody346">
+        <div class="advertit" id="njugu">
+            <span>advert Here</span>
+            <div class="advertMee" id="teke1">
+                <img src="/assets/a1.jpg" class="igmmm">
+                <img src="/assets/dissp.svg" class="igmmm1">
+                <span class="price">23,000/=</span>
+                <span class="before">23,000/=</span>
+                <img src="" alt="">
+            </div>
+            <div class="advertMee" id="teke2">
+                <img src="/assets/a2.jpg" class="igmmm">
+                <img src="/assets/dissp.svg" class="igmmm1">
+                <span class="price">23,000/=</span>
+                <span class="before">23,000/=</span>
+                <img src="" alt="">
+            </div>
+            <div class="advertMee" id="teke3">
+                <img src="/assets/a3.jpg" class="igmmm">
+                <img src="/assets/dissp.svg" class="igmmm1">
+                <span class="price">23,000/=</span>
+                <span class="before">23,000/=</span>
+                <img src="" alt="">
+            </div>
+            <div class="advertMee" id="teke4">
+                <img src="/assets/a4.jpg" class="igmmm">
+                <img src="/assets/dissp.svg" class="igmmm1">
+                <span class="price">23,000/=</span>
+                <span class="before">23,000/=</span>
+                <img src="" alt="">
+            </div>
+            <div class="advertMee" id="teke5">
+                <img src="/assets/a5.jpg" class="igmmm">
+                <img src="/assets/dissp.svg" class="igmmm1">
+                <span class="price">23,000/=</span>
+                <span class="before">23,000/=</span>
+                <img src="" alt="">
+            </div>
+        </div>
+        <div class="firstCat">
+            <div style="width: 100%;"><b>Browse</b></div>
+            <div class="title345">
+                <div *ngFor="let pic of categories " class="slide456">
+                    <p><b>{{ pic }}</b></p>
+                </div>                
+            </div>
+            <ion-list>
+                
+            </ion-list>
+        </div>
+        <div class="firstCat"></div>
+        <div class="listCat" *ngFor="let cat of categories">
+            <ion-label><b>{{ cat }}</b><ion-text>*</ion-text></ion-label>
+            <div class="slides456">
+                <div *ngFor="let pic of products" class="slide456">
+                    <img [src]="pic.pictures[0]" class="iOmg">
+                </div>                
+            </div>
+        </div>
+    </div>
+    <app-footer></app-footer>
 </ion-content>

@@ -1,0 +1,37 @@
+.productHead{
+    display: flex;
+    justify-content: space-around;
+    background-image: linear-gradient(to bottom,gold,orange);
+    min-height: 5vh;
+}
+.productBody{
+    background-image: linear-gradient(to bottom, black, grey);
+    min-height: 60vh;
+    display: grid;
+    grid-template-columns: 3fr 9fr;
+    grid-template-rows:30vh auto ;
+    padding: 2vw;
+    .mainImage{
+        grid-row: 1/3;
+        height: 70vh;
+        position: relative;
+        overflow: hidden;
+        border-radius: 5px;
+        box-shadow: 0 10px 20px 0 rgba($color: #000000, $alpha: .1),
+                        0 0 5px 0 rgba($color: #000000, $alpha: .9);
+        .toshow{
+            position: absolute;
+            height: 70vh;
+            max-width: 200%;
+            min-width: 100%;
+            bottom: 5vh;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .backss{
+            position: absolute;
+            bottom: 0;
+        }
+    }
+
+}
