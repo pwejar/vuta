@@ -9,9 +9,23 @@ import { AngularFirestore } from '@angular/fire/firestore';
   providedIn: 'root'
 })
 export class ServemeService {
+  cart: any[] = [];
+  prod: any;
   loadingIt: any;
   photo: any;
-  categories: string[] = ['Rolling Papers', 'Charlices', 'Electric Accessories', 'Tools and Equipment', 'Health']
+  categories: string[] = ['Rolling Papers', 'Charlices', 'Electric Accessories', 'Tools and Equipment', 'Health'];
+  templete: [{
+    uID: '834874754',
+    name: 'Philips SHe werew Headphone',
+    brand: 'philips',
+    oldPrice: '',
+    newPrice: '',
+    pictures: ['/assets/a1.jpg', '/assets/a2.jpg', '/assets/a5.jpg'],
+    details: 'Its all about the bass! Nothing beats the Philips SHE1350/00 earbud headphones when it comes to the bass sound. Designed with rubberized caps for comfort listening and sensitive microphones for easy control while talking on your mobile phone. Order for this Philips SHE1350/00 online from Jumia Kenya and have it delivered right to your doorstep.',
+    keyFeatures: ['Bass beat vents allow air movement for better sound with a deep rich bass', 'Frequency Response: 16 to 20000 hertz.'],
+    inTheBox: ['Earbud Headphone (SHE1350/00) - Black', 'grinder'],
+    specification: [{speck: 'Ram', detailSp: '34gb'}]
+  }];
 
   constructor(
     public angularFireAuth: AngularFireAuth,
@@ -32,7 +46,10 @@ export class ServemeService {
     });
   }
   read_products(collection){
-    return this.firestore.collection(collection).snapshotChanges();
+    return this.firestore.collection(collection, ref => ref.limit(12)).snapshotChanges();
+  }
+  orderSales(collection, unit, searchTearm, limit) {
+    return this.firestore.collection(collection, ref => ref.where(unit, '==', searchTearm).limit(limit)).snapshotChanges();
   }
   async creatNewProd(prod, catego) {
     return await this.firestore.collection(catego).add(prod);

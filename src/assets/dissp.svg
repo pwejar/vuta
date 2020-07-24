@@ -8,16 +8,19 @@ viewBox="0 0 21000 7000"
  <defs>
   <style type="text/css">
    <![CDATA[
-    .fil0 {fill:url(#id0)}
+    .fil0 {fill:#1A1A1A}
    ]]>
   </style>
-  <linearGradient id="id0" gradientUnits="userSpaceOnUse" x1="1219.66" y1="-2659.8" x2="6710.85" y2="7853.78">
-   <stop offset="0" style="stop-opacity:1; stop-color:gold"/>
-   <stop offset="1" style="stop-opacity:1; stop-color:#FF9933"/>
+   <mask id="id0">
+  <linearGradient id="id1" gradientUnits="userSpaceOnUse" x1="7922.79" y1="1616.33" x2="7925.2" y2="342.67">
+   <stop offset="0" style="stop-opacity:1; stop-color:white"/>
+   <stop offset="1" style="stop-opacity:0; stop-color:white"/>
   </linearGradient>
+    <rect style="fill:url(#id1)" x="-30.88" y="40.46" width="21012.76" height="6973.93"/>
+   </mask>
  </defs>
  <g id="Layer_x0020_1">
   <metadata id="CorelCorpID_0Corel-Layer"/>
-  <path class="fil0" d="M13111.7 2007.94c3767.69,-2032.99 5374.04,-31.45 7883.32,-1273.21l0 6343.15 -20978.02 0 0 -7123.77c4625.33,2017.79 7116.48,-1588.66 13094.7,2053.83z"/>
+  <path class="fil0" style="mask:url(#id0)" d="M-30.88 40.46l21012.76 0 0 6973.93 -21012.76 0 0 -6973.93z"/>
  </g>
 </svg>

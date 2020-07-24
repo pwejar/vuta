@@ -6,71 +6,99 @@
         </div>
         <div class="backedd longedd">
           <ion-searchbar></ion-searchbar>
-          <p>Login</p>
+          <span *ngIf="serveMe.isUserLoggedIn()" (click)="serveMe.logout()"><ion-icon name="log-out"></ion-icon><p>Log out</p></span>
+          <span *ngIf="!serveMe.isUserLoggedIn()" (click)="setLogIn()"><ion-icon name="person"></ion-icon><p>Login</p></span>
           <div class="cartCont">
-            <img src="/assets/icon/cart.svg" alt="">
+            <svg width="124" height="135" viewBox="0 0 124 135" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="Layer x0020 1">
+                <g id="theItemInCart" *ngIf="serveMe.cart.length >0">
+                <path id="Vector" d="M108.705 56.4573L69.492 4.9871L27.0293 26.0129L66.242 77.483L108.705 56.4573Z" fill="#FF6600"/>
+                <path id="Vector_2" d="M72.6739 3.4218L113.832 57.4455L65.0159 81.617L21.9012 25.0249L70.7171 0.853302L72.6739 3.4218V3.4218ZM103.577 55.4694L68.266 9.1208L32.1563 27.0008L67.4669 73.3495L103.577 55.4694Z" fill="black"/>
+                </g>
+                <path id="Vector_3" d="M78.1643 126.523H55.5247V117.005H78.1643V126.523ZM16.3737 60.5867H57.4587L57.9525 43.213H13.531C13.3734 43.213 13.2475 43.2252 13.1545 43.2479C12.8079 43.3321 12.4916 43.4954 12.2614 43.7086L16.3737 60.5867V60.5867ZM66.9464 60.5867H108.001L113.368 43.6449C113.176 43.5076 112.933 43.3908 112.664 43.3055C112.475 43.2459 112.294 43.213 112.132 43.213H67.4402L66.9464 60.5867V60.5867ZM104.987 70.1043H66.6758L66.182 87.4779H98.8827C98.9597 87.4779 99.0497 87.4084 99.1433 87.3009C99.6135 86.7604 100 85.8469 100.323 84.8296L104.987 70.1043ZM57.1881 70.1043H18.6926L22.3573 85.1455C22.5802 86.0608 22.9232 86.8582 23.3864 87.3215C23.4827 87.4177 23.5958 87.4779 23.7231 87.4779H56.6943L57.1881 70.1043V70.1043ZM115.574 121.551C115.574 114.29 109.689 108.405 102.428 108.405C95.1681 108.405 89.2828 114.29 89.2828 121.551C89.2828 128.811 95.1681 134.696 102.428 134.696C109.689 134.696 115.574 128.811 115.574 121.551ZM46.6607 122.325C46.6607 117.065 42.3965 112.8 37.1362 112.8C31.8762 112.8 27.6119 117.065 27.6119 122.325C27.6119 127.585 31.8762 131.849 37.1362 131.849C42.3965 131.849 46.6607 127.585 46.6607 122.325ZM13.531 33.6953H112.132C113.274 33.6953 114.428 33.8863 115.526 34.234C117.377 34.82 119.137 35.8963 120.46 37.2857C122.033 38.9365 123.032 41.0326 123.032 43.3818C123.032 44.1971 122.908 45.0269 122.644 45.8613L109.394 87.6922C108.724 89.8076 107.766 91.8826 106.319 93.5466C104.494 95.6435 102.092 96.9955 98.8827 96.9955H23.7231C22.5424 96.9955 21.456 96.8097 20.4605 96.4679V96.4681C17.6416 96.4681 15.0752 97.625 13.2121 99.4883C11.3486 101.351 10.192 103.918 10.192 106.737C10.192 109.556 11.3486 112.122 13.2121 113.985C15.0752 115.849 17.6416 117.005 20.4605 117.005V126.523C15.0144 126.523 10.0666 124.298 6.4828 120.715C2.8989 117.131 0.674194 112.183 0.674194 106.737C0.674194 101.291 2.8989 96.3428 6.4828 92.759C8.4261 90.8156 10.7707 89.2722 13.378 88.2661C13.2901 87.9717 13.2097 87.6748 13.137 87.3762L2.9451 45.5454C2.769 44.823 2.6858 44.1473 2.6858 43.5194C2.6858 41.0254 3.7619 38.808 5.4453 37.1018C6.9 35.6271 8.86009 34.5305 10.9236 34.0276C11.8128 33.8111 12.6921 33.6953 13.531 33.6953V33.6953Z" fill="black"/>
+                <g id="1944737324896">
+                <path id="Vector_4" fill-rule="evenodd" clip-rule="evenodd" d="M19.7831 55.8217H60.8681L61.362 38.448H16.9406C16.783 38.448 16.6571 38.4601 16.5639 38.4829C16.2174 38.5671 15.9011 38.7305 15.6709 38.9435L19.7831 55.8217Z" fill="#FFD700"/>
+                <path id="Vector_5" fill-rule="evenodd" clip-rule="evenodd" d="M60.5976 65.3393H22.102L25.7667 80.3805C25.9897 81.2958 26.3327 82.0933 26.7959 82.5565C26.8922 82.6527 27.0053 82.7129 27.1325 82.7129H60.1036L60.5976 65.3393V65.3393Z" fill="#FFD700"/>
+                <path id="Vector_6" fill-rule="evenodd" clip-rule="evenodd" d="M70.0854 65.3393L69.5915 82.7129H102.292C102.369 82.7129 102.459 82.6434 102.553 82.5358C103.023 81.9954 103.41 81.0819 103.732 80.0646L108.396 65.3393H70.0854V65.3393Z" fill="#FFD700"/>
+                <path id="Vector_7" fill-rule="evenodd" clip-rule="evenodd" d="M70.3559 55.8217H111.411L116.777 38.8799C116.585 38.7427 116.343 38.6258 116.073 38.5405C115.885 38.4809 115.703 38.448 115.542 38.448H70.8498L70.3559 55.8217V55.8217Z" fill="#FFD700"/>
+                </g>
+                </g>
+                </svg>
+            <p>{{serveMe.cart.length}}</p>
           </div>
         </div>
     </div>
     <div class="mainBody346">
         <div class="advertit" id="njugu">
             <span>advert Here</span>
-            <div class="advertMee" id="teke1">
-                <img src="/assets/a1.jpg" class="igmmm">
+            <div class="advertMee" id="teke1" [routerLink]="'/product/'+cat1[0]?.pUID">
+                <img [src]="cat1[0]?.pictures[0]" class="igmmm">
                 <img src="/assets/dissp.svg" class="igmmm1">
-                <span class="price">23,000/=</span>
-                <span class="before">23,000/=</span>
-                <img src="" alt="">
+                <span class="pp">{{ cat1[0]?.beforePrice | number}}/=</span>
+                <img class="picc" src="assets/icon/cancle.svg" alt="">
+                <p style="color: goldenrod;"><b style="color: white;">{{cat1[0]?.brand}}:</b> {{cat1[0]?.name}} </p>
+                <span class="sp">{{ cat1[0]?.sellingPrice | number}}/=</span>
             </div>
-            <div class="advertMee" id="teke2">
-                <img src="/assets/a2.jpg" class="igmmm">
+            <div class="advertMee" id="teke2" [routerLink]="'/product/'+cat2[0]?.pUID">
+                <img [src]="cat2[0]?.pictures[0]" class="igmmm">
                 <img src="/assets/dissp.svg" class="igmmm1">
-                <span class="price">23,000/=</span>
-                <span class="before">23,000/=</span>
-                <img src="" alt="">
+                <span class="pp">{{ cat2[0]?.beforePrice | number}}/=</span>
+                <img class="picc" src="assets/icon/cancle.svg" alt="">
+                <p style="color: goldenrod;"><b style="color: white;">{{cat2[0]?.brand}}:</b> {{cat2[0]?.name}} </p>
+                <span class="sp">{{ cat2[0]?.sellingPrice | number}}/=</span>
             </div>
-            <div class="advertMee" id="teke3">
-                <img src="/assets/a3.jpg" class="igmmm">
+            <div class="advertMee" id="teke3" [routerLink]="'/product/'+cat3[0]?.pUID">
+                <img [src]="cat3[0]?.pictures[0]" class="igmmm">
                 <img src="/assets/dissp.svg" class="igmmm1">
-                <span class="price">23,000/=</span>
-                <span class="before">23,000/=</span>
-                <img src="" alt="">
+                <span class="pp">{{ cat3[0]?.beforePrice | number}}/=</span>
+                <img class="picc" src="assets/icon/cancle.svg" alt="">
+                <p style="color: goldenrod;"><b style="color: white;">{{cat3[0]?.brand}}:</b> {{cat3[0]?.name}} </p>
+                <span class="sp">{{ cat3[0]?.sellingPrice | number}}/=</span>
             </div>
-            <div class="advertMee" id="teke4">
-                <img src="/assets/a4.jpg" class="igmmm">
+            <div class="advertMee" id="teke4" [routerLink]="'/product/'+cat4[0]?.pUID">
+                <img [src]="cat4[0]?.pictures[0]" class="igmmm">
                 <img src="/assets/dissp.svg" class="igmmm1">
-                <span class="price">23,000/=</span>
-                <span class="before">23,000/=</span>
-                <img src="" alt="">
+                <span class="pp">{{ cat1[0]?.beforePrice | number}}/=</span>
+                <img class="picc" src="assets/icon/cancle.svg" alt="">
+                <p style="color: goldenrod;"><b style="color: white;">{{cat1[0]?.brand}}:</b> {{cat1[0]?.name}} </p>
+                <span class="sp">{{ cat1[0]?.sellingPrice | number}}/=</span>
             </div>
-            <div class="advertMee" id="teke5">
-                <img src="/assets/a5.jpg" class="igmmm">
+            <div class="advertMee" id="teke5" [routerLink]="'/product/'+cat1[0]?.pUID">
+                <img [src]="cat1[0]?.pictures[0]" class="igmmm">
                 <img src="/assets/dissp.svg" class="igmmm1">
-                <span class="price">23,000/=</span>
-                <span class="before">23,000/=</span>
-                <img src="" alt="">
+                <span class="pp">{{ cat1[0]?.beforePrice | number}}/=</span>
+                <img class="picc" src="assets/icon/cancle.svg" alt="">
+                <p style="color: goldenrod;"><b style="color: white;">{{cat1[0]?.brand}}:</b> {{cat1[0]?.name}} </p>
+                <span class="sp">{{ cat1[0]?.sellingPrice | number}}/=</span>
             </div>
+            
         </div>
         <div class="firstCat">
             <div style="width: 100%;"><b>Browse</b></div>
             <div class="title345">
-                <div *ngFor="let pic of categories " class="slide456">
+                <div *ngFor="let pic of categories; let i = index" [attr.data-index]="i" class="slide456">
                     <p><b>{{ pic }}</b></p>
+                    <ul>
+                        <li *ngFor="let item of getList(i+1)" [attr.data-index]="i">{{ item.name }}</li>
+                      </ul>
                 </div>                
             </div>
             <ion-list>
                 
             </ion-list>
         </div>
-        <div class="firstCat"></div>
+        <div class="secondPuss">
+            <div>
+                <app-lighter *ngFor="let prod of products" [prod]='prod' (click)="serveMe.prod = prod" ></app-lighter>
+            </div>
+        </div>
         <div class="listCat" *ngFor="let cat of categories">
             <ion-label><b>{{ cat }}</b><ion-text>*</ion-text></ion-label>
-            <div class="slides456">
-                <div *ngFor="let pic of products" class="slide456">
-                    <img [src]="pic.pictures[0]" class="iOmg">
-                </div>                
+            <div >
+                <app-lighter *ngFor="let prod of products" [prod]='prod' (click)="serveMe.prod = prod" ></app-lighter>               
             </div>
         </div>
     </div>
+    <div class="searchIT"></div>
     <app-footer></app-footer>
 </ion-content>

@@ -75,7 +75,6 @@ export class AdminPage implements OnInit {
     this.itemBox = '';
     this.speck = '';
     this.detailSp = '';
-    this.categories = [];
   }
   searchThis(event) {
     console.log(this.products);
@@ -136,7 +135,11 @@ export class AdminPage implements OnInit {
       details: this.details,
       keyFeatures: this.features,
       inTheBox: this.inTheBox,
-      specification: this.specification
+      specification: this.specification,
+      stock: 0,
+      sellingPrice: 0,
+      beforePrice: 0
+
     };
     this.servMe.creatNewProd(theProduct,'products').then(()=>{
       this.resetForm();
@@ -223,19 +226,6 @@ export class AdminPage implements OnInit {
       const path = '/products/' + this.selectedImage.name + '_' + new Date();
       const fileRef = this.storage.ref(path);
       const task = this.storage.upload(path, this.selectedImage);
-      /*.then(rst => {
-        rst.ref.getDownloadURL().then(url => {
-          this.pictures.push(url);
-          iggg.style.opacity = '1';
-          this.isLoading = false;
-          this.imgSrc = '/assets/default.svg';
-          this.selectedImage = null;
-        });
-      }).catch( errr => {
-        this.servMe.showAlert(errr.message, 5);
-        iggg.style.opacity = '1';
-        this.isLoading = false;
-      });*/
       task.snapshotChanges().pipe(
         finalize(() => {
           const theur = fileRef.getDownloadURL();

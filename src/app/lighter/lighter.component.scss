@@ -1,0 +1,66 @@
+.lighterCon {
+    cursor: pointer;
+    height: 100%;
+    width: 100%;
+    border-radius: 5px;
+    font-size: smaller;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 0 20px 0 rgba($color: #a8a8a8, $alpha: .1),
+                    0 0 10px 0 rgba($color: #4b4b4b, $alpha: .9);
+    .img{
+        height: 70%;
+        position: absolute;
+        top: -10%;
+        left: 50%;
+        width: auto;
+        max-width: 200%;
+        min-width: 100%;
+        transform: translateX(-50%);
+    }
+    .backs{
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 50%;
+        width: auto;
+        min-width: 100%;
+        max-width: 300%;
+    }
+    p{
+        position: absolute;
+        bottom: 20%;
+        left: 5%;
+        font-size: smaller;
+        
+    }
+    .sp{
+        position: absolute;
+        bottom: 11%;
+        left: 30%; 
+        font-size: smaller;
+        color: wheat;
+    }
+    .pp,.picc{
+        position: absolute;
+        bottom: 12%;
+        left: 10%; 
+        height: 9%;
+        font-size: 10px;
+        color: rgb(124, 133, 143);
+    }
+    .toCatt{
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        width: 40%;
+        opacity: 0.3;
+        transition: opacity 0.2s;
+    }
+    
+}
+.lighterCon:hover{
+    .toCatt{
+        opacity: 1;
+    }
+}

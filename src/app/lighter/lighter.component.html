@@ -1,3 +1,9 @@
-<div class="lighterCon">
-  <img src="/assets/icon/logo.svg" alt="">
+<div class="lighterCon" attr.id="{{ prod.pUID }}">
+  <img [src]="prod.pictures[0]" class="img" [routerLink]="'/product/'+prod.pUID">
+  <img src="/assets/dissp.svg" class="backs">
+  <span class="pp">{{ prod.beforePrice | number}}/=</span>
+  <img class="picc" src="assets/icon/cancle.svg" alt="">
+  <p [routerLink]="'/product/'+prod.pUID" style="color: goldenrod;"><b style="color: white;">{{prod.brand}}:</b> {{prod.name}} </p>
+  <span class="sp">{{ prod.sellingPrice | number}}/=</span>
+  <img (click)="addTocart(prod)" src="assets/icon/addToCart.svg" class="toCatt" alt="">
 </div>
